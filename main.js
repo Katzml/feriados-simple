@@ -13,7 +13,6 @@ const toast = () => M.toast({ html: "I am a toast" });
 axios.get(url)
   .then(function (response) {
     resultados=response.data;
-    console.info(resultados);
   })
   .catch(function (error) {
     console.log(error);
