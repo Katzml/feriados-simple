@@ -1,6 +1,6 @@
 console.info("External script");
 
-const url = "https://feriados-api.herokuapp.com/api/feriados";
+const url = "http://localhost:3000/api/feriados";
 let resultados;
 
 const lista = document.getElementById('lista');
@@ -23,7 +23,7 @@ axios.get(url)
       <div class="col s12 m6 l4">
             <div class="card">
               <div class="card-image">
-                <img src="img/Square_200x200.svg" />
+                <img class="lista-img" src="${item.image}" height="200" width="200"/>
                 <span class="card-title">${item.title}</span>
                 <a class="btn-floating halfway-fab waves-effect waves-light red"
                   ><i class="material-icons">add</i></a
