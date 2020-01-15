@@ -1,6 +1,6 @@
 console.info("External script");
 
-const url = "http://localhost:3000/api/feriados";
+const url = "https://feriados-api.herokuapp.com/api/feriados";
 let resultados;
 
 const lista = document.getElementById('lista');
