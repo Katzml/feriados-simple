@@ -8,6 +8,25 @@ const preload = document.getElementById('preload');
 
 document.addEventListener("DOMContentLoaded", () => (instance = M.AutoInit()));
 
+const cardTemplate =(item)=>{
+return `<div class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image">
+          <img class="lista-img" src="${item.image}" height="200" width="200"/>
+          <span class="card-title"><h4 style="-webkit-text-stroke:1px black; margin-bottom:15%;">${item.title}</h4></span>
+          <!--<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>-->
+        </div>
+        <div class="card-content">
+          <p>
+            Fecha: ${item.date}
+          </p>
+          <p>
+            Tipo: ${item.extra}
+          </p>
+        </div>
+      </div>
+    </div>`;}
+
 //peticion a la api
 axios.get(url)
   .then(function (response) {
@@ -17,27 +36,8 @@ axios.get(url)
     console.log(error);
   })
   .finally(()=>{
-    resultados.forEach(item => {
+    resultados.map(element => {
       preload.style.display="none";
-      lista.innerHTML+=`
-      <div class="col s12 m6 l4">
-            <div class="card">
-              <div class="card-image">
-                <img class="lista-img" src="${item.image}" height="200" width="200"/>
-                <span class="card-title"><h4 style="-webkit-text-stroke:1px black; margin-bottom:15%;">${item.title}</h4></span>
-                <!--<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>-->
-              </div>
-              <div class="card-content">
-                <p>
-                  Fecha: ${item.date}
-                </p>
-                <p>
-                  Tipo: ${item.extra}
-                </p>
-              </div>
-            </div>
-          </div>
-      
-      `;
+      lista.insertAdjacentHTML('beforeend',cardTemplate(element));
     });
   })
