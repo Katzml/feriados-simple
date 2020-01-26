@@ -36,8 +36,8 @@ axios.get(url)
     console.log(error);
   })
   .finally(()=>{
+    preload.style.display="none";
     resultados.map(element => {
-      preload.style.display="none";
       lista.insertAdjacentHTML('beforeend',cardTemplate(element));
     });
   })
